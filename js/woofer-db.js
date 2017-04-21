@@ -33,7 +33,7 @@ function createWoof () {
   var text = woofText.value || ''
   if (!text.trim().length) return
   createWoofInDatabase({
-
+    created_at: new Date().getTime(),
     text: text
   })
 }
@@ -114,10 +114,8 @@ firebase.auth().signInAnonymously()
 // CREATE a new woof in Firebase
 function createWoofInDatabase (woof) {
   // TODO create a new record in Firebase
-  woof = woofText.value
-  firebase.database().ref('woof').push({
-    created_at: new Date().getTime(),
-    text: woof})
+  // woof = woofText.value
+  firebase.database().ref('woof').push(woof)
 }
 
 // READ from Firebase when woofs are added, changed, or removed
